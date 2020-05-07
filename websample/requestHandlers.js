@@ -20,7 +20,7 @@ function upload(response, exec, postData) {
 
   exec("asciinema rec", function (err, stdout, stderr) {
     console.log('asciinema001 : ');
-    console.log(stdout);
+    console.log(stderr);
     exec("ls -la", function (err, stdout, stderr) {
       console.log('ls -la : ');
       console.log(stdout);
@@ -52,7 +52,7 @@ function upload(response, exec, postData) {
     //     });
     // });
   });
-  response.end();
+  // response.end();
 }
 exports.start = start;
 exports.upload = upload;
