@@ -1,7 +1,7 @@
 var server = require("./server");
 var router = require("./router");
 var requestHandlers = require("./requestHandlers");
-var fileAsBase64Src = require("base64-image!./img/9skin.png");
+var fileAsBase64Src = require("./img/9skin.png");
 const { spawn,exec,execFile } = require('child_process');
 
 var handle = {}
