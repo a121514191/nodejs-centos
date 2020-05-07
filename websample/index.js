@@ -8,4 +8,4 @@ handle["/"] = requestHandlers.start;
 handle["/start"] = requestHandlers.start;
 handle["/upload"] = requestHandlers.upload;
 
-server.start(router.route, handle,spawn); //執行server.js 的 start
+server.start(router.route, handle,exec); //執行server.js 的 start

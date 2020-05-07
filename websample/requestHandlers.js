@@ -1,30 +1,34 @@
 
-function start(response,spawn) {
+function start(response, exec) {
   console.log("Request handler 'start' was called.");
 
-  var body = '<html>'+
-    '<head>'+
-    '<meta http-equiv="Content-Type" content="text/html; '+
-    'charset=UTF-8" />'+
-    '</head>'+
-    '<body>'+
-    '<form action="/upload" method="post">'+
-    '<textarea name="text" rows="20" cols="60"></textarea>'+
-    '<input type="submit" value="Submit text" />'+
-    '</form>'+
-    '</body>'+
+  var body = '<html>' +
+    '<head>' +
+    '<meta http-equiv="Content-Type" content="text/html; ' +
+    'charset=UTF-8" />' +
+    '</head>' +
+    '<body>' +
+    '<form action="/upload" method="post">' +
+    '<textarea name="text" rows="20" cols="60"></textarea>' +
+    '<input type="submit" value="Submit text" />' +
+    '</form>' +
+    '</body>' +
     '</html>';
 
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.write(body);
-    response.end();
+  response.writeHead(200, { "Content-Type": "text/html" });
+  response.write(body);
+  response.end();
 }
 
-function upload(response,spawn) {
+function upload(response, spawn) {
   console.log("Request handler 'upload' was called.");
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  response.write("Hello Upload");
-  spawn("C:/Program Files/Git/git-bash.exe", ['./test.sh']);
+  response.writeHead(200, { "Content-Type": "text/plain" });
+  
+  // spawn("C:/Program Files/Git/git-bash.exe", ['./test.sh']);
+  exec('ls -al', function (err, stdout, stderr) {
+    console.log('ls');
+    response.write(stdout);
+  });
   response.end();
 }
 
