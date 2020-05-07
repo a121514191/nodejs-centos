@@ -12,15 +12,15 @@ function start(response, exec, postData) {
 
 function upload(response, exec, postData) {
   console.log("Request handler 'upload' was called.");
-  response.writeHead(200, { "Content-Type": "text/plain" });
-  response.write("You're Url is : " +
-    querystring.parse(postData).Url);
-  response.write("You're Document is : " +
-    querystring.parse(postData).Document);
+  // response.writeHead(200, { "Content-Type": "text/plain" });
+  // response.write("You're Url is : " +
+  //   querystring.parse(postData).Url);
+  // response.write("You're Document is : " +
+  //   querystring.parse(postData).Document);
 
    
     setTimeout(function(){
-      exec("asciinema rec", function () {
+      exec("asciinema rec t01", function () {
         console.log('asciinema rec');
       });
     },1000);
@@ -29,19 +29,19 @@ function upload(response, exec, postData) {
       exec("ls -la", function () {
         console.log('ls -la');
       });
-    },2000);
+    },3000);
 
     setTimeout(function(){
       exec("exit", function () {
         console.log('exit');
       });
-    },4000);
+    },5000);
 
     setTimeout(function(){
       exec("enter", function () {
         console.log('enter');
       });
-    },6000);
+    },7000);
 
     // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
     //   console.log('touch002 : ');
@@ -69,7 +69,7 @@ function upload(response, exec, postData) {
     //       });
     //     });
     // });
-  response.end();
+  // response.end();
 }
 
 exports.start = start;
