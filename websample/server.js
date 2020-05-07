@@ -1,12 +1,12 @@
 var http = require("http");
 var url = require("url");
 
-function start(route, handle,spawn,fileAsBase64Src) {
+function start(route, handle,exec) {
   function onRequest(request, response) {
     var pathname = url.parse(request.url).pathname;
     console.log("Request for " + pathname + " received."); //每當有人訪問時
 
-    route(handle, pathname, response,spawn,fileAsBase64Src);//初始路由
+    route(handle, pathname, response,exec);//初始路由
 
     //response.writeHead(200, {"Content-Type": "text/plain"});
     //var content = route(handle, pathname);
