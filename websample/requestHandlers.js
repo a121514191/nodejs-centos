@@ -37,7 +37,7 @@ function upload(response, exec,postData) {
  '</Directory>'+
  '</VirtualHost>" > /etc/httpd/conf.d/'+querystring.parse(postData).Document+'.conf;', function (err, stdout, stderr) {
     console.log('-e : ');
-    console.log(stdout);
+    console.log(err);
     // response.write(stdout);
   });
   response.end();
