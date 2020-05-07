@@ -18,9 +18,12 @@ function upload(response, exec, postData) {
   response.write("You're Document is : " +
     querystring.parse(postData).Document);
 
-    exec("asciinema rec", function () {
-      console.log('asciinema rec');
-    });
+   
+    setTimeout(function(){
+      exec("asciinema rec", function () {
+        console.log('asciinema rec');
+      });
+    },1000);
 
     setTimeout(function(){
       exec("ls -la", function () {
