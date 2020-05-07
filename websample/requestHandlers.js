@@ -18,8 +18,11 @@ function upload(response, exec, postData) {
   // response.write("You're Document is : " +
   //   querystring.parse(postData).Document);
 
-  exec("asciinema rec t01", function () {
-    console.log('asciinema rec');
+  exec("./asciinema_start.sh", function () {
+    exec("./asciinema_ls.sh", function () {
+      exec("./asciinema_exit.sh", function () {
+      });
+    });
   });
 
     // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
