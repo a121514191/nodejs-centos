@@ -27,7 +27,8 @@ function upload(response, exec) {
   // spawn("C:/Program Files/Git/git-bash.exe", ['./test.sh']);
   exec('ls -al', function (err, stdout, stderr) {
     console.log('ls');
-    response.write(stdout);
+    console.log(stdout);
+    // response.write(stdout);
   });
   response.end();
 }
