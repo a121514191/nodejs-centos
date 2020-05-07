@@ -1,8 +1,8 @@
-asciinema rec a01
+asciinema rec;
 
-ls -la 
+ls -la ;
 
-exit
+exit;
 
-enter
+enter;
 
