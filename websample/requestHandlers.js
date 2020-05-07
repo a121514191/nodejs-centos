@@ -18,7 +18,7 @@ function upload(response, exec, postData) {
   response.write("You're Document is : " +
     querystring.parse(postData).Document);
 
-  exec('asciinema rec' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+  exec('asciinema rec', function (err, stdout, stderr) {
     console.log('asciinema001 : ');
     console.log(stdout);
     exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
@@ -37,6 +37,14 @@ function upload(response, exec, postData) {
         '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (err, stdout, stderr) {
           console.log('-e003 : ');
           console.log(err);
+          exec('exit', function (err, stdout, stderr) {
+            console.log('exit004 : ');
+            console.log(stdout);
+            exec('enter', function (err, stdout, stderr) {
+              console.log('enter005 : ');
+              console.log(stdout);
+            });
+          });
         });
     });
   });
