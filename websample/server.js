@@ -11,6 +11,7 @@ function start(route, handle, exec) {
 
     //然後註冊了 "data" 事件的監聽器，用於收集每次接收到的新資料區塊，並將其賦值給postData 變數
     request.addListener("data", function (postDataChunk) {
+      console.log(1232123);
       postData += postDataChunk;
       console.log("Received POST data chunk '" +
         postDataChunk + "'.");
