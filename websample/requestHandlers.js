@@ -18,8 +18,8 @@ function upload(response, exec, postData) {
   response.write("You're Document is : " +
     querystring.parse(postData).Document);
 
-    exec("asciinema rec ", function () {
-      console.log('asciinema_start');
+    exec("asciinema rec", function () {
+      console.log('asciinema rec');
     });
 
     setTimeout(function(){
