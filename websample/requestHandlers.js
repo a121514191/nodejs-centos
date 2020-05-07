@@ -21,32 +21,32 @@ function upload(response, exec, postData) {
   exec('asciinema rec', function (err, stdout, stderr) {
     console.log('asciinema001 : ');
     console.log(stdout);
-    exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
-      console.log('touch002 : ');
-      exec('echo -e "<VirtualHost *:80>' +
-        '\n    ServerName ' + querystring.parse(postData).Url +
-        '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
-        '\n    ErrorLog logs/' + querystring.parse(postData).Document +
-        '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
-        '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
-        '\n        Options FollowSymLinks' +
-        '\n        AllowOverride None' +
-        '\n        Order allow,deny' +
-        '\n        allow from all' +
-        '\n    </Directory>' +
-        '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (err, stdout, stderr) {
-          console.log('-e003 : ');
-          console.log(err);
-          exec('exit', function (err, stdout, stderr) {
-            console.log('exit004 : ');
-            console.log(stdout);
-            exec('enter', function (err, stdout, stderr) {
-              console.log('enter005 : ');
-              console.log(stdout);
-            });
-          });
-        });
-    });
+    // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+    //   console.log('touch002 : ');
+    //   exec('echo -e "<VirtualHost *:80>' +
+    //     '\n    ServerName ' + querystring.parse(postData).Url +
+    //     '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
+    //     '\n    ErrorLog logs/' + querystring.parse(postData).Document +
+    //     '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
+    //     '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
+    //     '\n        Options FollowSymLinks' +
+    //     '\n        AllowOverride None' +
+    //     '\n        Order allow,deny' +
+    //     '\n        allow from all' +
+    //     '\n    </Directory>' +
+    //     '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (err, stdout, stderr) {
+    //       console.log('-e003 : ');
+    //       console.log(err);
+    //       exec('exit', function (err, stdout, stderr) {
+    //         console.log('exit004 : ');
+    //         console.log(stdout);
+    //         exec('enter', function (err, stdout, stderr) {
+    //           console.log('enter005 : ');
+    //           console.log(stdout);
+    //         });
+    //       });
+    //     });
+    // });
   });
 
   response.end();
