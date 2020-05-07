@@ -2,28 +2,10 @@
 function start(response, exec) {
   console.log("Request handler 'start' was called.");
 
-  response.writeln("<!doctype html>");
-  response.writeln("<html lang=\'en\'>");
-  response.writeln("  <head>");
-  response.writeln("    <!-- Required meta tags -->");
-  response.writeln("    <meta charset=\'utf-8\'>");
-  response.writeln("    <meta name=\'viewport\' content=\'width=device-width, initial-scale=1, shrink-to-fit=no\'>");
-  response.writeln("");
-  response.writeln("    <!-- Bootstrap CSS -->");
-  response.writeln("    <link rel=\'stylesheet\' href=\'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css\' integrity=\'sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS\' crossorigin=\'anonymous\'>");
-  response.writeln("");
-  response.writeln("    <title>Hello, world!</title>");
-  response.writeln("  </head>");
-  response.writeln("  <body>");
-  response.writeln("    <h1>Hello, world!</h1>");
-  response.writeln("");
-  response.writeln("    <!-- Optional JavaScript -->");
-  response.writeln("    <!-- jQuery first, then Popper.js, then Bootstrap JS -->");
-  response.writeln("    <script src=\'https://code.jquery.com/jquery-3.3.1.slim.min.js\' integrity=\'sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\' crossorigin=\'anonymous\'></script>");
-  response.writeln("    <script src=\'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js\' integrity=\'sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut\' crossorigin=\'anonymous\'></script>");
-  response.writeln("    <script src=\'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js\' integrity=\'sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k\' crossorigin=\'anonymous\'></script>");
-  response.writeln("  </body>");
-  response.writeln("</html>");
+  var body = '<!doctype html> <html lang="en"> <head> <!-- Required meta tags --> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Bootstrap CSS --> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> <title>Hello, world!</title> </head> <body> <h1>Hello, world!</h1> <!-- Optional JavaScript --> <!-- jQuery first, then Popper.js, then Bootstrap JS --> <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> </body> </html>';
+
+  response.writeHead(200, { "Content-Type": "text/html" });
+  response.write(body);
   response.end();
 }
 
