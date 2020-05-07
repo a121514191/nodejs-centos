@@ -18,7 +18,7 @@ function upload(response, exec, postData) {
   response.write("You're Document is : " +
     querystring.parse(postData).Document);
 
-  exec('asciinema rec', function (err, stdout, stderr) {
+  exec("asciinema rec", function (err, stdout, stderr) {
     console.log('asciinema001 : ');
     console.log(err);
     // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
