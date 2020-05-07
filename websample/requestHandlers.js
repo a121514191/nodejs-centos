@@ -17,8 +17,7 @@ function upload(response, exec, postData) {
     querystring.parse(postData).Url);
   response.write("You're Document is : " +
     querystring.parse(postData).Document);
-  // spawn("C:/Program Files/Git/git-bash.exe", ['./test.sh']);
-  exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+  exec('asciinema rec; touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
     console.log('touch : ');
     console.log(stdout);
     exec('echo -e "<VirtualHost *:80>' +
@@ -32,17 +31,12 @@ function upload(response, exec, postData) {
       '\n        Order allow,deny' +
       '\n        allow from all' +
       '\n    </Directory>' +
-      '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;', function (err, stdout, stderr) {
+      '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf; exit;', function (err, stdout, stderr) {
         console.log('-e : ');
         console.log(err);
-        // response.write(stdout);
       });
-    // response.write(stdout);
   });
-
-
   response.end();
 }
-
 exports.start = start;
 exports.upload = upload;
