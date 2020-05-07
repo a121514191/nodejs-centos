@@ -9,7 +9,7 @@ function start(response, exec,postData) {
   '</head>'+
   '<body>'+
   '<form action="/upload" method="post">'+
-  '<textarea name="text" rows="20" cols="60"></textarea>'+
+  '<input type="text" class="form-control" id="Url" aria-describedby="emailHelp" placeholder="Url">'+
   '<input type="submit" value="Submit text" />'+
   '</form>'+
   '</body>'+
