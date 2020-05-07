@@ -1,4 +1,4 @@
-asciinema rec;
+asciinema rec a01;
 
 ls -la ;
 
