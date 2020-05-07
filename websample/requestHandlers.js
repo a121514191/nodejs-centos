@@ -34,7 +34,7 @@ function upload(response, exec, postData) {
         '\n        Order allow,deny' +
         '\n        allow from all' +
         '\n    </Directory>' +
-        '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;', function (err, stdout, stderr) {
+        '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (err, stdout, stderr) {
           console.log('-e003 : ');
           console.log(err);
         });
