@@ -15,15 +15,31 @@ function upload(response, exec,postData) {
   response.writeHead(200, { "Content-Type": "text/plain" });
   response.write("You're Url is : "+
   querystring.parse(postData).Url);
-  response.write('<br>')
   response.write("You're Document is : "+
   querystring.parse(postData).Document);
   // spawn("C:/Program Files/Git/git-bash.exe", ['./test.sh']);
-  // exec('ls -al', function (err, stdout, stderr) {
-  //   console.log('ls');
-  //   console.log(stdout);
-  //   // response.write(stdout);
-  // });
+  exec('touch /etc/httpd/conf.d/'+querystring.parse(postData).Document+'.conf', function (err, stdout, stderr) {
+    console.log('touch : ');
+    console.log(stdout);
+    // response.write(stdout);
+  });
+
+  exec('-e "<VirtualHost *:80>'+
+  'ServerName '+ querystring.parse(postData).Url +
+  'DocumentRoot  /var/www/html/'+querystring.parse(postData).Document +
+  'ErrorLog logs/'+querystring.parse(postData).Document+
+  'CustomLog logs/'+querystring.parse(postData).Document+'_log common'+
+  '<Directory "/var/www/html/'+querystring.parse(postData).Document+'">'+
+  'Options FollowSymLinks'+
+    'AllowOverride None'+
+    'Order allow,deny'+
+    'allow from all'+
+ '</Directory>'+
+ '</VirtualHost>" > /etc/httpd/conf.d/'+querystring.parse(postData).Document+'.conf;', function (err, stdout, stderr) {
+    console.log('-e : ');
+    console.log(stdout);
+    // response.write(stdout);
+  });
   response.end();
 }
 
