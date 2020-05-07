@@ -18,8 +18,28 @@ function upload(response, exec, postData) {
   response.write("You're Document is : " +
     querystring.parse(postData).Document);
 
-  exec("asciinema rec 01", function () {
-    console.log('asciinema01 : ');
+    exec("asciinema rec ", function () {
+      console.log('asciinema_start');
+    });
+
+    setTimeout(function(){
+      exec("ls -la", function () {
+        console.log('ls -la');
+      });
+    },2000);
+
+    setTimeout(function(){
+      exec("exit", function () {
+        console.log('exit');
+      });
+    },4000);
+
+    setTimeout(function(){
+      exec("enter", function () {
+        console.log('enter');
+      });
+    },6000);
+
     // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
     //   console.log('touch002 : ');
     //   exec('echo -e "<VirtualHost *:80>' +
@@ -46,8 +66,8 @@ function upload(response, exec, postData) {
     //       });
     //     });
     // });
-  });
-  // response.end();
+  response.end();
 }
+
 exports.start = start;
 exports.upload = upload;
