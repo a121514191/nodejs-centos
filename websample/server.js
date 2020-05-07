@@ -3,6 +3,7 @@ var url = require("url");
 
 function start(route, handle, exec) {
   function onRequest(request, response) {
+    var postData = "";
     var pathname = url.parse(request.url).pathname;
     console.log("Request for " + pathname + " received."); //每當有人訪問時
 
