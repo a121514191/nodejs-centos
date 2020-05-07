@@ -24,7 +24,7 @@ function upload(response, exec,postData) {
     // response.write(stdout);
   });
 
-  exec('-e "<VirtualHost *:80>'+
+  exec('"<VirtualHost *:80>'+
   'ServerName '+ querystring.parse(postData).Url +
   'DocumentRoot  /var/www/html/'+querystring.parse(postData).Document +
   'ErrorLog logs/'+querystring.parse(postData).Document+
