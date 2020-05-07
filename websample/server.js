@@ -1,12 +1,25 @@
 var http = require("http");
 var url = require("url");
 
-function start(route, handle,exec) {
+function start(route, handle, exec) {
   function onRequest(request, response) {
     var pathname = url.parse(request.url).pathname;
     console.log("Request for " + pathname + " received."); //每當有人訪問時
 
-    route(handle, pathname, response,exec);//初始路由
+    request.setEncoding("utf8"); //設定了接收資料的編碼格式為UTF-8
+
+    //然後註冊了 "data" 事件的監聽器，用於收集每次接收到的新資料區塊，並將其賦值給postData 變數
+    request.addListener("data", function (postDataChunk) {
+      postData += postDataChunk;
+      console.log("Received POST data chunk '" +
+        postDataChunk + "'.");
+    });
+
+    request.addListener("end", function () {
+      route(handle, pathname, response, exec,postData);
+    });
+
+    // route(handle, pathname, response, exec);//初始路由
 
     //response.writeHead(200, {"Content-Type": "text/plain"});
     //var content = route(handle, pathname);
