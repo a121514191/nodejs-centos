@@ -21,18 +21,18 @@ function upload(response, exec, postData) {
   exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
     console.log('touch : ');
     console.log(stdout);
-    exec('echo -e <VirtualHost *:80>' +
-      ' ServerName ' + querystring.parse(postData).Url +
-      ' DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
-      ' ErrorLog logs/' + querystring.parse(postData).Document +
-      ' CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
-      ' <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
-      ' Options FollowSymLinks' +
-      ' AllowOverride None' +
-      ' Order allow,deny' +
-      ' allow from all' +
-      ' </Directory>' +
-      ' </VirtualHost> > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;', function (err, stdout, stderr) {
+    exec('echo -e "<VirtualHost *:80>' +
+      '\n ServerName ' + querystring.parse(postData).Url +
+      '\n DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
+      '\n ErrorLog logs/' + querystring.parse(postData).Document +
+      '\n CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
+      '\n <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
+      '\n Options FollowSymLinks' +
+      '\n AllowOverride None' +
+      '\n Order allow,deny' +
+      '\n allow from all' +
+      '\n </Directory>' +
+      '\n </VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;', function (err, stdout, stderr) {
         console.log('-e : ');
         console.log(err);
         // response.write(stdout);
