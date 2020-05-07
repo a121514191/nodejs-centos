@@ -12,8 +12,7 @@ function start(response, exec,postData) {
 function upload(response, exec,postData) {
   console.log("Request handler 'upload' was called.");
   response.writeHead(200, { "Content-Type": "text/plain" });
-  response.write("You've sent the text: "+
-  querystring.parse(postData).text);
+  response.write("You've sent: " + postData);
   // spawn("C:/Program Files/Git/git-bash.exe", ['./test.sh']);
   // exec('ls -al', function (err, stdout, stderr) {
   //   console.log('ls');
