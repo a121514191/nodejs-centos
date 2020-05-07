@@ -21,7 +21,7 @@ function upload(response, exec, postData) {
   exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
     console.log('touch : ');
     console.log(stdout);
-    exec('-e "<VirtualHost *:80>' +
+    exec('"<VirtualHost *:80>' +
       'ServerName ' + querystring.parse(postData).Url +
       'DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
       'ErrorLog logs/' + querystring.parse(postData).Document +
