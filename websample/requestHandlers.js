@@ -20,7 +20,7 @@ function start(response, exec) {
   response.end();
 }
 
-function upload(response, spawn) {
+function upload(response, exec) {
   console.log("Request handler 'upload' was called.");
   response.writeHead(200, { "Content-Type": "text/plain" });
   
