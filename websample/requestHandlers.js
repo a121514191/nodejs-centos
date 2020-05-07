@@ -20,7 +20,7 @@ function upload(response, exec, postData) {
 
   exec('asciinema rec', function (err, stdout, stderr) {
     console.log('asciinema001 : ');
-    console.log(stdout);
+    console.log(err);
     // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
     //   console.log('touch002 : ');
     //   exec('echo -e "<VirtualHost *:80>' +
@@ -48,7 +48,6 @@ function upload(response, exec, postData) {
     //     });
     // });
   });
-
   response.end();
 }
 exports.start = start;
