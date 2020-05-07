@@ -17,25 +17,30 @@ function upload(response, exec, postData) {
     querystring.parse(postData).Url);
   response.write("You're Document is : " +
     querystring.parse(postData).Document);
-  exec('asciinema rec; touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
-    console.log('touch : ');
+
+  exec('asciinema rec' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+    console.log('asciinema001 : ');
     console.log(stdout);
-    exec('echo -e "<VirtualHost *:80>' +
-      '\n    ServerName ' + querystring.parse(postData).Url +
-      '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
-      '\n    ErrorLog logs/' + querystring.parse(postData).Document +
-      '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
-      '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
-      '\n        Options FollowSymLinks' +
-      '\n        AllowOverride None' +
-      '\n        Order allow,deny' +
-      '\n        allow from all' +
-      '\n    </Directory>' +
-      '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf; exit;', function (err, stdout, stderr) {
-        console.log('-e : ');
-        console.log(err);
-      });
+    exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+      console.log('touch002 : ');
+      exec('echo -e "<VirtualHost *:80>' +
+        '\n    ServerName ' + querystring.parse(postData).Url +
+        '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
+        '\n    ErrorLog logs/' + querystring.parse(postData).Document +
+        '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
+        '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
+        '\n        Options FollowSymLinks' +
+        '\n        AllowOverride None' +
+        '\n        Order allow,deny' +
+        '\n        allow from all' +
+        '\n    </Directory>' +
+        '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;', function (err, stdout, stderr) {
+          console.log('-e003 : ');
+          console.log(err);
+        });
+    });
   });
+
   response.end();
 }
 exports.start = start;
