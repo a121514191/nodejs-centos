@@ -51,17 +51,19 @@ function upload2(response, exec, postData) {
 function upload(response, exec, postData,spawn) {
   console.log("asciinema test start");
  
-  const ls = spawn('asciinema', ['rec', 't01']);
+  const asci_start = spawn('./', ['asciinema_start.sh']);
+  const asci_ls = spawn('ls', ['-la']);
+  const asci_exit = spawn('./', ['asciinema_exit.sh']);
 
-  ls.stdout.on('data', (data) => {
+  asci_ls.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);
   });
   
-  ls.stderr.on('data', (data) => {
+  asci_ls.stderr.on('data', (data) => {
     console.error(`stderr: ${data}`);
   });
   
-  ls.on('close', (code) => {
+  asci_ls.on('close', (code) => {
     console.log(`子进程退出，退出码 ${code}`);
   });
   // var cmd = 'asciinema rec a01 && ls -la && exit && enter';
