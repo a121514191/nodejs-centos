@@ -22,7 +22,7 @@
 
 1.img 我直接轉base64 原因(nodejs引入png失敗，先用base64將就一下 ) [https://c.runoob.com/front-end/59]
 
-2.使用bootstrap官網 基礎檔 排版 
+2.使用bootstrap官網 基礎檔 排版 [https://bootstrap.hexschool.com/docs/4.2/getting-started/introduction/]
 
 3.排出來的成果
 
