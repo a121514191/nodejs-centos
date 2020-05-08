@@ -100,3 +100,13 @@ asciinema upload test01 //asciinema upload 當前目錄檔名
 -y, --yes -對所有提示回答“是”（例如，上傳確認）
 -q, --quiet -保持安靜，禁止所有通知/警告（暗示-y）
 ```
+
+7. 嘗試連動網頁 但目前是失敗的 卡在一開始的錄製
+
+參考: https://asciinema.org/docs/embedding
+
+有很多種方式 我這裡使用直接嵌入js
+
+```
+<script id="asciicast-psk6wrIMsENOJB5Ew2UqLUA7V" src="https://asciinema.org/a/psk6wrIMsENOJB5Ew2UqLUA7V.js" async></script>
+```
