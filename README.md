@@ -18,7 +18,7 @@
 
 1.https://asciinema.org/docs/getting-started
 
-### 首先是 node_js 寫 web(包含form表單) + 終端機 再centos 上建vhost
+### Step_01 首先是 node_js 寫 web(包含form表單) + 終端機 再centos 上建vhost
 
 1.img 我直接轉base64 原因(nodejs引入png失敗，先用base64將就一下 ) [https://c.runoob.com/front-end/59]
 
