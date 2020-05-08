@@ -51,7 +51,7 @@ function upload2(response, exec, postData) {
 function upload(response, exec, postData,spawn) {
   console.log("asciinema test start");
  
-  const ls = spawn('ls', ['-lh', '/usr']);
+  const ls = spawn('asciinema rec t01', ['-lh', '/usr']);
 
   ls.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);
