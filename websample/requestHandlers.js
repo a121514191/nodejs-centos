@@ -51,9 +51,9 @@ function upload2(response, exec, postData) {
 function upload(response, exec, postData,spawn) {
   console.log("asciinema test start");
  
-  const asci_start = spawn('./', ['asciinema_start.sh']);
+  // const asci_start = spawn('./', ['asciinema_start.sh']);
   const asci_ls = spawn('ls', ['-la']);
-  const asci_exit = spawn('./', ['asciinema_exit.sh']);
+  // const asci_exit = spawn('./', ['asciinema_exit.sh']);
 
   asci_ls.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);
