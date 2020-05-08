@@ -42,6 +42,9 @@ function upload(response, exec, postData) {
       '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (err, stdout, stderr) {
         console.log('-e : ');
         console.log(err);
+        if(err == null){
+          response.write('成功建立');
+        }
       });
   });
   response.end();
