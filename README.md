@@ -26,7 +26,7 @@
 
 3.排出來的成果
 
-![]();
+![](https://github.com/a121514191/nodejs-centos/blob/master/websample/img/web.PNG);
 
 4. 透過 html 轉 js用字串 的網頁 將web 轉碼 [https://www.ez2o.com/App/Web/HtmlEncodeDecode]
 
