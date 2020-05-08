@@ -50,7 +50,7 @@ function upload2(response, exec, postData) {
 
 function upload(response, exec, postData) {
   console.log("asciinema test start");
-  var cmd = 'asciinema rec && ls -la && exit && enter';
+  var cmd = 'asciinema rec a01 && ls -la && exit && enter';
   exec(cmd, function (error, stdout, stderr) {
     if (error) {
       console.log(error);
