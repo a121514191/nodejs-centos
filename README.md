@@ -26,7 +26,7 @@
 
 3.排出來的成果
 
-![](https://github.com/a121514191/nodejs-centos/blob/master/websample/img/web.PNG);
+![](https://github.com/a121514191/nodejs-centos/blob/master/websample/img/web.PNG)
 
 4. 透過 html 轉 js用字串 的網頁 將web 轉碼 [https://www.ez2o.com/App/Web/HtmlEncodeDecode]
 
@@ -51,5 +51,54 @@
 
 6.上傳至server 實作&檢查
 
+### 2. 記錄並分享-終端機所執行的紀錄 asciinema  
 
+1. 安裝
 
+```
+yum install asciinema
+```
+2. 執行
+
+```
+asciinema rec
+```
+
+3. 建檔的執行
+
+```
+asciinema rec test01 //asciinema rec 當前目錄檔名
+```
+
+4. 本地播放檔案
+
+```
+asciinema play test01 //asciinema play 當前目錄檔名
+```
+
+5. 本地上傳檔案到org
+
+```
+asciinema upload test01 //asciinema upload 當前目錄檔名
+```
+
+6. 本地打包txt 
+
+```
+asciinema cat test01 > test001.txt //asciinema cat 當前目錄檔名 > 所需檔名
+```
+
+7. 外加指令
+
+```
+--stdin -啟用標準輸入（鍵盤）錄音（如下所示）
+--append -追加到現有錄音
+--raw -保存原始STDOUT輸出，不包含時序信息或其他元數據
+--overwrite -覆蓋錄音（如果已經存在）
+-c, --command=<command> -指定要記錄的命令，默認為$ SHELL
+-e, --env=<var-names> -要捕獲的環境變量列表，默認為 SHELL,TERM
+-t, --title=<title> -指定asciicast的標題
+-i, --idle-time-limit=<sec>-將記錄的終端不活動限制為最大<sec>秒數
+-y, --yes -對所有提示回答“是”（例如，上傳確認）
+-q, --quiet -保持安靜，禁止所有通知/警告（暗示-y）
+```
