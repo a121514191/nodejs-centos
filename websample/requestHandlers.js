@@ -10,7 +10,7 @@ function start(response, exec, postData, spawn) {
   response.end();
 }
 
-function upload(response, exec, postData) {
+function upload2(response, exec, postData) {
   console.log("Request handler 'upload' was called.");
   // response.writeHead(200, { "Content-Type": "text/plain" });
   // response.write("You're Url is : " +
@@ -47,22 +47,22 @@ function upload(response, exec, postData) {
 }
 
 
-function upload2(response, exec, postData, spawn) {
+function upload(response, exec, postData, spawn) {
   console.log("asciinema test start");
-  // const asci_start = spawn('./', ['asciinema_start.sh']);
+  const asci_start = spawn('asciinema ', ['rec']);
   // const asci_ls = spawn('ls', ['-la']);
   // const asci_exit = spawn('./', ['asciinema_exit.sh']);
 
-  // asci_ls.stdout.on('data', (data) => {
-  //   console.log(`stdout: ${data}`);
-  // });
+  asci_start.stdout.on('data', (data) => {
+    console.log(`stdout: ${data}`);
+  });
 
-  // asci_ls.stderr.on('data', (data) => {
-  //   console.error(`stderr: ${data}`);
-  // });
-  // asci_ls.on('close', (code) => {
-  //   console.log(`子进程退出，退出码 ${code}`);
-  // });
+  asci_start.stderr.on('data', (data) => {
+    console.error(`stderr: ${data}`);
+  });
+  asci_start.on('close', (code) => {
+    console.log(`子进程退出，退出码 ${code}`);
+  });
   // var cmd = 'asciinema rec a01 && ls -la && exit && enter';
   // exec(cmd, function (error, stdout, stderr) {
   //   if (error) {
