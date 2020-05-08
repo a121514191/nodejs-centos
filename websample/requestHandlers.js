@@ -10,7 +10,7 @@ function start(response, exec, postData) {
   response.end();
 }
 
-function upload(response, exec, postData) {
+function upload2(response, exec, postData) {
   console.log("Request handler 'upload' was called.");
   response.writeHead(200, { "Content-Type": "text/plain" });
   response.write("You're Url is : " +
@@ -42,12 +42,33 @@ function upload(response, exec, postData) {
       '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (err, stdout, stderr) {
         console.log('-e : ');
         console.log(err);
-        if(err == null){
-          response.write('成功建立');
-        }
       });
   });
   response.end();
+}
+
+
+function upload(response, exec, postData) {
+  console.log("asciinema test start");
+  // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+  //   console.log('touch : ');
+  //   exec('echo -e "<VirtualHost *:80>' +
+  //     '\n    ServerName ' + querystring.parse(postData).Url +
+  //     '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
+  //     '\n    ErrorLog logs/' + querystring.parse(postData).Document +
+  //     '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
+  //     '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
+  //     '\n        Options FollowSymLinks' +
+  //     '\n        AllowOverride None' +
+  //     '\n        Order allow,deny' +
+  //     '\n        allow from all' +
+  //     '\n    </Directory>' +
+  //     '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (err, stdout, stderr) {
+  //       console.log('-e : ');
+  //       console.log(err);
+  //     });
+  // });
+  // response.end();
 }
 
 exports.start = start;
