@@ -115,3 +115,16 @@ asciinema upload test01 //asciinema upload 當前目錄檔名
 
 ### 2020/05/14 先將檔案上傳與資料庫的部分上傳成功
 
+Step 1 安裝檔案上傳抓資料的 formidable
+
+ps: 剛開始沒有package.json 會抓不到node_modules 所以要先初始化 
+```
+npm init -f
+```
+之後就能執行正常安裝
+
+```
+npm install  formidable 
+```
+
+
