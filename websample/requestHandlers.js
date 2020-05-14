@@ -1,6 +1,9 @@
-var formidable = require('formidable');
+// var formidable = require('formidable');
+
 var querystring = require("querystring");
- fs = require("fs");
+
+//  fs = require("fs");
+
 function start(response, exec, postData, spawn) {
   console.log("Request handler 'start' was called.");
   //html form的name很重要
