@@ -1,8 +1,8 @@
-// var formidable = require('formidable');
+var formidable = require('formidable');
 
 var querystring = require("querystring");
 
-//  fs = require("fs");
+ fs = require("fs");
 
 function start(response, exec, postData, spawn) {
   console.log("Request handler 'start' was called.");
@@ -18,7 +18,7 @@ function start(response, exec, postData, spawn) {
 function upload(response,exec,postData,spawn) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
-  console.log(postData);
+  // console.log(postData);
   // response.writeHead(200, { "Content-Type": "text/html" });
   response.writeHead(200, { "Content-Type": "text/plain" });
   response.write("You're Url is : " +
@@ -28,32 +28,32 @@ function upload(response,exec,postData,spawn) {
   response.write("You're upload is : " +
     querystring.parse(postData).upload)+"  |  ";
 
-  // exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
-  //   console.log('mkdir : ');
-  //   console.log(stderr);
-    // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
-    //   console.log('touch : ');
-    //   exec('echo -e "<VirtualHost *:80>' +
-    //     '\n    ServerName ' + querystring.parse(postData).Url +
-    //     '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
-    //     '\n    ErrorLog logs/' + querystring.parse(postData).Document +
-    //     '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
-    //     '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
-    //     '\n        Options FollowSymLinks' +
-    //     '\n        AllowOverride None' +
-    //     '\n        Order allow,deny' +
-    //     '\n        allow from all' +
-    //     '\n    </Directory>' +
-    //     '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (error, stdout, stderr) {
-    //       if (error) {
-    //         console.log(error);
-    //       }
-    //       else {
-    //         console.log("成功");
-    //       }
-    //     });
-    // });
-  // });
+  exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
+    console.log('mkdir : ');
+    console.log(stderr);
+    exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+      console.log('touch : ');
+      exec('echo -e "<VirtualHost *:80>' +
+        '\n    ServerName ' + querystring.parse(postData).Url +
+        '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
+        '\n    ErrorLog logs/' + querystring.parse(postData).Document +
+        '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
+        '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
+        '\n        Options FollowSymLinks' +
+        '\n        AllowOverride None' +
+        '\n        Order allow,deny' +
+        '\n        allow from all' +
+        '\n    </Directory>' +
+        '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (error, stdout, stderr) {
+          if (error) {
+            console.log(error);
+          }
+          else {
+            console.log("成功");
+          }
+        });
+    });
+  });
   // var form = new formidable.IncomingForm();
   // console.log("about to parse");
   // console.log(form);
@@ -121,21 +121,21 @@ function upload_want(response, exec, postData) {
 
 //測試asciinema函式
 function upload_test(response, exec, postData, spawn) {
-  console.log("asciinema test start");
-  const asci_start = spawn('top', ['-d 1']);
+  // console.log("asciinema test start");
+  // const asci_start = spawn('top', ['-d 1']);
   // const asci_ls = spawn('ls', ['-la']);
   // const asci_exit = spawn('./', ['asciinema_exit.sh']);
 
-  asci_start.stdout.on('data', (data) => {
-    console.log(`stdout: ${data}`);
-  });
+  // asci_start.stdout.on('data', (data) => {
+  //   console.log(`stdout: ${data}`);
+  // });
 
-  asci_start.stderr.on('data', (data) => {
-    console.error(`stderr: ${data}`);
-  });
-  asci_start.on('close', (code) => {
-    console.log(`子进程退出，退出码 ${code}`);
-  });
+  // asci_start.stderr.on('data', (data) => {
+  //   console.error(`stderr: ${data}`);
+  // });
+  // asci_start.on('close', (code) => {
+  //   console.log(`子进程退出，退出码 ${code}`);
+  // });
   // var cmd = 'asciinema rec a01 && ls -la && exit && enter';
   // exec(cmd, function (error, stdout, stderr) {
   //   if (error) {
