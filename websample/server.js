@@ -19,7 +19,8 @@ function start(route, handle, exec,spawn) {
       //   postDataChunk + "'.");
     });
     request.addListener("end", function () {
-      route(handle, pathname, response, exec,postData,spawn);
+      console.log('end');
+      route(handle, pathname, response,exec,postData,spawn);
     });
 
     // route(handle, pathname, response, exec);//初始路由
