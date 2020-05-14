@@ -25,6 +25,7 @@ function upload(response, exec, request) {
 
   var form = new formidable.IncomingForm();
   console.log("about to parse");
+  console.log(form);
   form.parse(request, function(error, fields, files) {
     console.log(files);
     console.log("parsing done");
