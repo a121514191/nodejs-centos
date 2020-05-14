@@ -23,42 +23,42 @@ function upload(response,exec,postData,spawn,request) {
   response.write("You're Document is : " +
     querystring.parse(postData).upload+"\n");
 
-  var form = new formidable.IncomingForm();
-  console.log("about to parse");
-  console.log(form);
-  form.parse(request, function(error, fields, files) {
-    console.log(files);
-    console.log("parsing done");
-    fs.renameSync(files.upload.path, "/var/www/html/"+querystring.parse(postData).Document)+"/"+ querystring.parse(postData).upload;
-    // response.write("received image:<br/>");
-    // response.write("<img src='/show' />");
-
+  exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
+    console.log('mkdir : ');
+    exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+      console.log('touch : ');
+      exec('echo -e "<VirtualHost *:80>' +
+        '\n    ServerName ' + querystring.parse(postData).Url +
+        '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
+        '\n    ErrorLog logs/' + querystring.parse(postData).Document +
+        '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
+        '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
+        '\n        Options FollowSymLinks' +
+        '\n        AllowOverride None' +
+        '\n        Order allow,deny' +
+        '\n        allow from all' +
+        '\n    </Directory>' +
+        '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (error, stdout, stderr) {
+          if (error) {
+            console.log(error);
+          }
+          else {
+            console.log("成功");
+          }
+        });
+        var form = new formidable.IncomingForm();
+        console.log("about to parse");
+        console.log(form);
+        form.parse(request, function(error, fields, files) {
+          console.log(files);
+          console.log("parsing done");
+          fs.renameSync(files.upload.path, "/var/www/html/"+querystring.parse(postData).Document)+"/"+ querystring.parse(postData).upload;
+          // response.write("received image:<br/>");
+          // response.write("<img src='/show' />");
+        });
+    });
   });
   response.end();
-  // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
-  //   console.log('touch : ');
-  //   exec('echo -e "<VirtualHost *:80>' +
-  //     '\n    ServerName ' + querystring.parse(postData).Url +
-  //     '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
-  //     '\n    ErrorLog logs/' + querystring.parse(postData).Document +
-  //     '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
-  //     '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
-  //     '\n        Options FollowSymLinks' +
-  //     '\n        AllowOverride None' +
-  //     '\n        Order allow,deny' +
-  //     '\n        allow from all' +
-  //     '\n    </Directory>' +
-  //     '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (error, stdout, stderr) {
-  //       if (error) {
-  //         console.log(error);
-  //       }
-  //       else {
-  //         console.log("成功");
-  //       }
-  //     });
-  // });
-
-  // response.end();
 }
 
 // function show(response, exec, postData) {
