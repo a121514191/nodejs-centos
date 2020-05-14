@@ -15,7 +15,7 @@ function start(response, exec, postData, spawn) {
 }
 
 //完整form函式
-function upload(response, exec, postData, spawn) {
+function upload(response, exec, postData, spawn,request) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
   // console.log(postData);
