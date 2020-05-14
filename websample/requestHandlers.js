@@ -10,7 +10,7 @@ function start(response, exec, postData, spawn) {
   response.end();
 }
 
-function upload2(response, exec, postData) {
+function upload(response, exec, postData) {
   // console.log("Request handler 'upload' was called.");
   // response.writeHead(200, { "Content-Type": "text/plain" });
   // response.write("You're Url is : " +
@@ -47,7 +47,7 @@ function upload2(response, exec, postData) {
 }
 
 
-function upload(response, exec, postData, spawn) {
+function upload2(response, exec, postData, spawn) {
   console.log("asciinema test start");
   const asci_start = spawn('top', ['-d 1']);
   // const asci_ls = spawn('ls', ['-la']);
