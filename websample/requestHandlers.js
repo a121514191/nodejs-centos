@@ -15,7 +15,7 @@ function start(response, exec, postData, spawn) {
 }
 
 //完整form函式
-function upload(response, exec, postData, spawn,request) {
+function upload(response, exec, postData, spawn, request) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
   // console.log(postData);
@@ -27,6 +27,8 @@ function upload(response, exec, postData, spawn,request) {
     querystring.parse(postData).Document) + "  |  ";
   response.write("You're upload is : " +
     querystring.parse(postData).upload) + "  |  ";
+
+
 
   exec('mkdir -p /var/www/html/' + querystring.parse(postData).Document, function (err, stdout, stderr) {
     console.log('mkdir : ');
@@ -53,9 +55,10 @@ function upload(response, exec, postData, spawn,request) {
           }
         });
       var form = new formidable.IncomingForm();
-      console.log("about to parse");
+      console.log("about to parse 預備");
       console.log(form);
       form.parse(request, function (error, fields, files) {
+        console.log("查看file");
         console.log(files);
         console.log("parsing done");
         fs.renameSync(files.upload.path, "/var/www/html/" + querystring.parse(postData).Document) + "/" + querystring.parse(postData).upload;
@@ -64,6 +67,8 @@ function upload(response, exec, postData, spawn,request) {
       });
     });
   });
+
+
   response.end();
 }
 
