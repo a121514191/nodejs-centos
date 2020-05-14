@@ -28,7 +28,7 @@ function upload(response,exec,postData,spawn) {
   response.write("You're upload is : " +
     querystring.parse(postData).upload)+"  |  ";
 
-  exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
+  exec('mkdir -p /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
     console.log('mkdir : ');
     console.log(stderr);
     exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
