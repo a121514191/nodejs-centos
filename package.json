@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-centos",
+  "version": "1.0.0",
+  "description": "今天分兩個部份報告",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a121514191/nodejs-centos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a121514191/nodejs-centos/issues"
+  },
+  "homepage": "https://github.com/a121514191/nodejs-centos#readme",
+  "dependencies": {
+    "formidable": "^1.2.2"
+  }
+}

@@ -110,3 +110,8 @@ asciinema upload test01 //asciinema upload 當前目錄檔名
 ```
 <script id="asciicast-psk6wrIMsENOJB5Ew2UqLUA7V" src="https://asciinema.org/a/psk6wrIMsENOJB5Ew2UqLUA7V.js" async></script>
 ```
+
+# 接續
+
+### 2020/05/14 先將檔案上傳與資料庫的部分上傳成功
+
