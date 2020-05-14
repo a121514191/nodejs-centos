@@ -1,3 +1,4 @@
+var formidable = require('formidable');
 var querystring = require("querystring");
  fs = require("fs");
 function start(response, exec, postData, spawn) {
