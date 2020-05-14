@@ -12,16 +12,16 @@ function start(response, exec, postData, spawn) {
 }
 
 //完整form函式
-function upload(response, exec, request) {
+function upload(response,exec,postData,spawn,request) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
-  // response.writeHead(200, { "Content-Type": "text/plain" });
-  // response.write("You're Url is : " +
-  //   querystring.parse(postData).Url +"\n");
-  // response.write("You're Document is : " +
-  //   querystring.parse(postData).Document+"\n");
-  // response.write("You're Document is : " +
-  //   querystring.parse(postData).upload+"\n");
+  response.writeHead(200, { "Content-Type": "text/html" });
+  response.write("You're Url is : " +
+    querystring.parse(postData).Url +"\n");
+  response.write("You're Document is : " +
+    querystring.parse(postData).Document+"\n");
+  response.write("You're Document is : " +
+    querystring.parse(postData).upload+"\n");
 
   var form = new formidable.IncomingForm();
   console.log("about to parse");
@@ -29,11 +29,11 @@ function upload(response, exec, request) {
   form.parse(request, function(error, fields, files) {
     console.log(files);
     console.log("parsing done");
-    fs.renameSync(files.upload.path, "/tmp/test.png");
+    fs.renameSync(files.upload.path, "/var/www/html/"+querystring.parse(postData).Document)+"/"+ querystring.parse(postData).upload;
+    // response.write("received image:<br/>");
+    // response.write("<img src='/show' />");
+
   });
-  response.writeHead(200, {"Content-Type": "text/html"});
-  response.write("received image:<br/>");
-  response.write("<img src='/show' />");
   response.end();
   // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
   //   console.log('touch : ');
@@ -61,20 +61,20 @@ function upload(response, exec, request) {
   // response.end();
 }
 
-function show(response, exec, postData) {
-  console.log("Request handler 'show' was called.");
-  fs.readFile("/tmp/test.png", "binary", function(error, file) {
-    if(error) {
-      response.writeHead(500, {"Content-Type": "text/plain"});
-      response.write(error + "\n");
-      response.end();
-    } else {
-      response.writeHead(200, {"Content-Type": "image/png"});
-      response.write(file, "binary");
-      response.end();
-    }
-  });
-}
+// function show(response, exec, postData) {
+//   console.log("Request handler 'show' was called.");
+//   fs.readFile("/tmp/test.png", "binary", function(error, file) {
+//     if(error) {
+//       response.writeHead(500, {"Content-Type": "text/plain"});
+//       response.write(error + "\n");
+//       response.end();
+//     } else {
+//       response.writeHead(200, {"Content-Type": "image/png"});
+//       response.write(file, "binary");
+//       response.end();
+//     }
+//   });
+// }
 
 //理想函式
 function upload_want(response, exec, postData) {
@@ -147,4 +147,4 @@ function upload_test(response, exec, postData, spawn) {
 
 exports.start = start;
 exports.upload = upload;
-exports.show = show;
+// exports.show = show;
