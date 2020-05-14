@@ -29,11 +29,11 @@ function upload(response, exec, request) {
     console.log(files);
     console.log("parsing done");
     fs.renameSync(files.upload.path, "/tmp/test.png");
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.write("received image:<br/>");
-    response.write("<img src='/show' />");
-    response.end();
   });
+  response.writeHead(200, {"Content-Type": "text/html"});
+  response.write("received image:<br/>");
+  response.write("<img src='/show' />");
+  response.end();
   // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
   //   console.log('touch : ');
   //   exec('echo -e "<VirtualHost *:80>' +
@@ -57,23 +57,23 @@ function upload(response, exec, request) {
   //     });
   // });
 
-  response.end();
+  // response.end();
 }
 
-function show(response, exec, postData) {
-  console.log("Request handler 'show' was called.");
-  fs.readFile("/tmp/test.png", "binary", function(error, file) {
-    if(error) {
-      response.writeHead(500, {"Content-Type": "text/plain"});
-      response.write(error + "\n");
-      response.end();
-    } else {
-      response.writeHead(200, {"Content-Type": "image/png"});
-      response.write(file, "binary");
-      response.end();
-    }
-  });
-}
+// function show(response, exec, postData) {
+//   console.log("Request handler 'show' was called.");
+//   fs.readFile("/tmp/test.png", "binary", function(error, file) {
+//     if(error) {
+//       response.writeHead(500, {"Content-Type": "text/plain"});
+//       response.write(error + "\n");
+//       response.end();
+//     } else {
+//       response.writeHead(200, {"Content-Type": "image/png"});
+//       response.write(file, "binary");
+//       response.end();
+//     }
+//   });
+// }
 
 //理想函式
 function upload_want(response, exec, postData) {
