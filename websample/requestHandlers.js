@@ -2,7 +2,7 @@ var formidable = require('formidable');
 
 var querystring = require("querystring");
 
- fs = require("fs");
+fs = require("fs");
 
 function start(response, exec, postData, spawn) {
   console.log("Request handler 'start' was called.");
@@ -15,20 +15,20 @@ function start(response, exec, postData, spawn) {
 }
 
 //完整form函式
-function upload(response,exec,postData,spawn) {
+function upload(response, exec, postData, spawn) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
   // console.log(postData);
   // response.writeHead(200, { "Content-Type": "text/html" });
   response.writeHead(200, { "Content-Type": "text/plain" });
   response.write("You're Url is : " +
-    querystring.parse(postData).Url) +"  |  ";
+    querystring.parse(postData).Url) + "  |  ";
   response.write("You're Document is : " +
-    querystring.parse(postData).Document) +"  |  ";
+    querystring.parse(postData).Document) + "  |  ";
   response.write("You're upload is : " +
-    querystring.parse(postData).upload)+"  |  ";
+    querystring.parse(postData).upload) + "  |  ";
 
-  exec('mkdir -p /var/www/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
+  exec('mkdir -p /var/www/html/' + querystring.parse(postData).Document, function (err, stdout, stderr) {
     console.log('mkdir : ');
     console.log(stderr);
     exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
@@ -52,18 +52,18 @@ function upload(response,exec,postData,spawn) {
             console.log("成功");
           }
         });
+      var form = new formidable.IncomingForm();
+      console.log("about to parse");
+      console.log(form);
+      form.parse(request, function (error, fields, files) {
+        console.log(files);
+        console.log("parsing done");
+        fs.renameSync(files.upload.path, "/var/www/html/" + querystring.parse(postData).Document) + "/" + querystring.parse(postData).upload;
+        // response.write("received image:<br/>");
+        // response.write("<img src='/show' />");
+      });
     });
   });
-  // var form = new formidable.IncomingForm();
-  // console.log("about to parse");
-  // console.log(form);
-  // form.parse(request, function(error, fields, files) {
-  //   console.log(files);
-  //   console.log("parsing done");
-  //   fs.renameSync(files.upload.path, "/var/www/html/"+querystring.parse(postData).Document)+"/"+ querystring.parse(postData).upload;
-  //   // response.write("received image:<br/>");
-  //   // response.write("<img src='/show' />");
-  // });
   response.end();
 }
 
