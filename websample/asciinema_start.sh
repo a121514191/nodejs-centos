@@ -1,1 +1,0 @@
-asciinema rec a01
