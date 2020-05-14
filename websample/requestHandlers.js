@@ -49,15 +49,16 @@ function upload(response,exec,postData,spawn,request) {
         var form = new formidable.IncomingForm();
         console.log("about to parse");
         console.log(form);
-        form.parse(request, function(error, fields, files) {
-          console.log(files);
-          console.log("parsing done");
-          fs.renameSync(files.upload.path, "/var/www/html/"+querystring.parse(postData).Document)+"/"+ querystring.parse(postData).upload;
-          // response.write("received image:<br/>");
-          // response.write("<img src='/show' />");
-        });
+       
     });
   });
+  // form.parse(request, function(error, fields, files) {
+  //   console.log(files);
+  //   console.log("parsing done");
+  //   fs.renameSync(files.upload.path, "/var/www/html/"+querystring.parse(postData).Document)+"/"+ querystring.parse(postData).upload;
+  //   // response.write("received image:<br/>");
+  //   // response.write("<img src='/show' />");
+  // });
   response.end();
 }
 
