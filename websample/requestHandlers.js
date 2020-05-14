@@ -12,7 +12,7 @@ function start(response, exec, postData, spawn) {
 }
 
 //完整form函式
-function upload(response,exec,postData,spawn,request) {
+function upload(response,exec,postData,spawn) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
   // response.writeHead(200, { "Content-Type": "text/html" });
@@ -21,7 +21,7 @@ function upload(response,exec,postData,spawn,request) {
     querystring.parse(postData).Url +"  |  ");
   response.write("You're Document is : " +
     querystring.parse(postData).Document+"  |  ");
-  response.write("You're Document is : " +
+  response.write("You're upload is : " +
     querystring.parse(postData).upload+"  |  ");
 
   // exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
