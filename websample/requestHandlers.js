@@ -12,19 +12,20 @@ function start(response, exec, postData, spawn) {
 }
 
 //完整form函式
-function upload(response,exec,postData,spawn,request) {
+function upload(response,exec,postData,spawn) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
   response.writeHead(200, { "Content-Type": "text/html" });
   response.write("You're Url is : " +
-    querystring.parse(postData).Url +"\n");
+    querystring.parse(postData).Url +"\r\n");
   response.write("You're Document is : " +
-    querystring.parse(postData).Document+"\n");
+    querystring.parse(postData).Document+"\r\n");
   response.write("You're Document is : " +
-    querystring.parse(postData).upload+"\n");
+    querystring.parse(postData).upload+"\r\n");
 
   exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
     console.log('mkdir : ');
+    console.log(stderr);
     // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
     //   console.log('touch : ');
     //   exec('echo -e "<VirtualHost *:80>' +
