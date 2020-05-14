@@ -22,11 +22,11 @@ function upload(response,exec,postData,spawn) {
   // response.writeHead(200, { "Content-Type": "text/html" });
   response.writeHead(200, { "Content-Type": "text/plain" });
   response.write("You're Url is : " +
-    querystring.parse(postData).Url);
+    querystring.parse(postData).Url) +"  |  ";
   response.write("You're Document is : " +
-    querystring.parse(postData).Document);
-  // response.write("You're upload is : " +
-  //   querystring.parse(postData).upload+"  |  ");
+    querystring.parse(postData).Document) +"  |  ";
+  response.write("You're upload is : " +
+    querystring.parse(postData).upload)+"  |  ";
 
   // exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
   //   console.log('mkdir : ');
