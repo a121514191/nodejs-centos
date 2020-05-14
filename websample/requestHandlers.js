@@ -1,4 +1,4 @@
-var formidable = require('formidable');
+// var formidable = require('formidable');
 var querystring = require("querystring");
  fs = require("fs");
 function start(response, exec, postData, spawn) {
@@ -87,32 +87,32 @@ function upload_want(response, exec, postData) {
   // response.write("You're Document is : " +
   //   querystring.parse(postData).Document);
 
-  exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
-    console.log('touch : ');
-    exec('echo -e "<VirtualHost *:80>' +
-      '\n    ServerName ' + querystring.parse(postData).Url +
-      '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
-      '\n    ErrorLog logs/' + querystring.parse(postData).Document +
-      '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
-      '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
-      '\n        Options FollowSymLinks' +
-      '\n        AllowOverride None' +
-      '\n        Order allow,deny' +
-      '\n        allow from all' +
-      '\n    </Directory>' +
-      '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (error, stdout, stderr) {
-        if (error) {
-          console.log(error);
-        }
-        else {
-          console.log("成功");
-        }
-      });
-  });
-  var body = '<!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> </head> <body> <div class="container"> <div class="row"> <div class="col-2"> </div> <div class="col-8" style="text-align: center;"> <script id="asciicast-psk6wrIMsENOJB5Ew2UqLUA7V" data-autoplay="true" src="https://asciinema.org/a/psk6wrIMsENOJB5Ew2UqLUA7V.js" async></script> </div> <div class="col-2"> </div> </div> <!-- Optional JavaScript --> <!-- jQuery first, then Popper.js, then Bootstrap JS --> <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> </body> </html>';
-  response.writeHead(200, { "Content-Type": "text/html" });
-  response.write(body);
-  response.end();
+  // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
+  //   console.log('touch : ');
+  //   exec('echo -e "<VirtualHost *:80>' +
+  //     '\n    ServerName ' + querystring.parse(postData).Url +
+  //     '\n    DocumentRoot  /var/www/html/' + querystring.parse(postData).Document +
+  //     '\n    ErrorLog logs/' + querystring.parse(postData).Document +
+  //     '\n    CustomLog logs/' + querystring.parse(postData).Document + '_log common' +
+  //     '\n    <Directory "/var/www/html/' + querystring.parse(postData).Document + '">' +
+  //     '\n        Options FollowSymLinks' +
+  //     '\n        AllowOverride None' +
+  //     '\n        Order allow,deny' +
+  //     '\n        allow from all' +
+  //     '\n    </Directory>' +
+  //     '\n</VirtualHost>" > /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf;exit;enter;', function (error, stdout, stderr) {
+  //       if (error) {
+  //         console.log(error);
+  //       }
+  //       else {
+  //         console.log("成功");
+  //       }
+  //     });
+  // });
+  // var body = '<!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> </head> <body> <div class="container"> <div class="row"> <div class="col-2"> </div> <div class="col-8" style="text-align: center;"> <script id="asciicast-psk6wrIMsENOJB5Ew2UqLUA7V" data-autoplay="true" src="https://asciinema.org/a/psk6wrIMsENOJB5Ew2UqLUA7V.js" async></script> </div> <div class="col-2"> </div> </div> <!-- Optional JavaScript --> <!-- jQuery first, then Popper.js, then Bootstrap JS --> <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> </body> </html>';
+  // response.writeHead(200, { "Content-Type": "text/html" });
+  // response.write(body);
+  // response.end();
 }
 
 //測試asciinema函式

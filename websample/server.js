@@ -15,8 +15,8 @@ function start(route, handle, exec,spawn) {
     request.addListener("data", function (postDataChunk) {
       console.log('start');
       postData += postDataChunk;
-      console.log("Received POST data chunk '" +
-        postDataChunk + "'.");
+      // console.log("Received POST data chunk '" +
+      //   postDataChunk + "'.");
     });
     request.addListener("end", function () {
       route(handle, pathname, response, exec,postData,spawn);
