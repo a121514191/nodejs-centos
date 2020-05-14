@@ -54,21 +54,20 @@ function upload(response, exec, postData, spawn, request) {
             console.log("成功");
           }
         });
-      var form = new formidable.IncomingForm();
-      console.log("about to parse 預備");
-      console.log(form);
-      form.parse(request, function (error, fields, files) {
-        console.log("查看file");
-        console.log(files);
-        console.log("parsing done");
-        fs.renameSync(files.upload.path, "/var/www/html/" + querystring.parse(postData).Document) + "/" + querystring.parse(postData).upload;
-        // response.write("received image:<br/>");
-        // response.write("<img src='/show' />");
-      });
+     
     });
   });
-
-
+  var form = new formidable.IncomingForm();
+  console.log("about to parse 預備");
+  console.log(form);
+  form.parse(request, function (error, fields, files) {
+    console.log("查看file");
+    console.log(files);
+    console.log("parsing done");
+    fs.renameSync(files.upload.path, "/tmp/" + querystring.parse(postData).upload);
+    // response.write("received image:<br/>");
+    // response.write("<img src='/show' />");
+  });
   response.end();
 }
 
