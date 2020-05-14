@@ -12,20 +12,21 @@ function start(response, exec, postData, spawn) {
 }
 
 //完整form函式
-function upload(response,exec,postData,spawn) {
+function upload(response,exec,postData,spawn,request) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
-  response.writeHead(200, { "Content-Type": "text/html" });
+  // response.writeHead(200, { "Content-Type": "text/html" });
+  response.writeHead(200, { "Content-Type": "text/plain" });
   response.write("You're Url is : " +
-    querystring.parse(postData).Url +"\r\n");
+    querystring.parse(postData).Url +"  |  ");
   response.write("You're Document is : " +
-    querystring.parse(postData).Document+"\r\n");
+    querystring.parse(postData).Document+"  |  ");
   response.write("You're Document is : " +
-    querystring.parse(postData).upload+"\r\n");
+    querystring.parse(postData).upload+"  |  ");
 
-  exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
-    console.log('mkdir : ');
-    console.log(stderr);
+  // exec('mkdir /var/wwww/html/' + querystring.parse(postData).Document , function (err, stdout, stderr) {
+  //   console.log('mkdir : ');
+  //   console.log(stderr);
     // exec('touch /etc/httpd/conf.d/' + querystring.parse(postData).Document + '.conf', function (err, stdout, stderr) {
     //   console.log('touch : ');
     //   exec('echo -e "<VirtualHost *:80>' +
@@ -48,7 +49,7 @@ function upload(response,exec,postData,spawn) {
     //       }
     //     });
     // });
-  });
+  // });
   // var form = new formidable.IncomingForm();
   // console.log("about to parse");
   // console.log(form);
