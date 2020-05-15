@@ -17,8 +17,11 @@ function start(response, exec, postData, spawn) {
 function upload(response, exec, postData, spawn) {
   //console.log 是回應server  response.write 回應client
   console.log("Request handler 'upload' was called.");
-  // console.log(postData);
+  console.log(querystring.parse(postData).Url);
+  console.log(querystring.parse(postData).Document);
+  console.log(querystring.parse(postData).template);
   // response.writeHead(200, { "Content-Type": "text/html" });
+  console.log()
   response.writeHead(200, { "Content-Type": "text/plain" });
   response.write("You're Url is : " +
     querystring.parse(postData).Url);
