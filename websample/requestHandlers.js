@@ -62,8 +62,8 @@ function upload(response, exec, postData, spawn) {
           else {
             console.log("成功");
           }
-          exec(' git clone ' + querystring.parse(postData).Clone_url + '/var/www/html/' + querystring.parse(postData).Document, function (err, stdout, stderr) {
-            console.log('mkdir : ');
+          exec(' git clone ' + querystring.parse(postData).Clone_url + ' /var/www/html/' + querystring.parse(postData).Document, function (err, stdout, stderr) {
+            console.log('git clone : ');
             console.log(stderr);
         
           });
