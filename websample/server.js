@@ -10,7 +10,7 @@ function start(route, handle, exec,spawn) {
     // route(handle, pathname, response, exec,request,spawn);
 
 
-    request.setEncoding("utf8"); //設定了接收資料的編碼格式為UTF-8
+    // request.setEncoding("utf8"); //設定了接收資料的編碼格式為UTF-8
     //然後註冊了 "data" 事件的監聽器，用於收集每次接收到的新資料區塊，並將其賦值給postData 變數
     request.addListener("data", function (postDataChunk) {
       console.log('start');
