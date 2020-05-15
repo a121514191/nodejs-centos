@@ -25,7 +25,7 @@ function upload(response, exec, postData, spawn, request) {
   response.write("You're Document is : " +
     querystring.parse(postData).Document);
   response.write("You're upload is : " +
-    querystring.parse(postData).upload);
+    querystring.parse(postData).template);
 
   exec('mkdir -p /var/www/html/' + querystring.parse(postData).Document, function (err, stdout, stderr) {
     console.log('mkdir : ');
