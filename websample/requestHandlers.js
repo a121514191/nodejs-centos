@@ -2,6 +2,8 @@ var formidable = require('formidable');
 
 var querystring = require("querystring");
 
+var fs = require("fs");
+
 function start(response, exec, postData, spawn) {
   console.log("Request handler 'start' was called.");
   //html form的name很重要
@@ -69,7 +71,7 @@ function upload(response, exec, postData, spawn, request) {
   response.end();
 }
 
-function show(response, exec, postData, spawn, request,fs) {
+function show(response) {
   console.log("Request handler 'show' was called.");
   fs.readFile("/tmp/test.png", "binary", function(error, file) {
     if(error) {
@@ -84,20 +86,20 @@ function show(response, exec, postData, spawn, request,fs) {
   });
 }
 
-function logo(response, exec, postData, spawn, request,fs) {
-  console.log("Request handler 'logo' was called.");
-  fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
-    if(error) {
-      response.writeHead(500, {"Content-Type": "text/plain"});
-      response.write(error + "\n");
-      response.end();
-    } else {
-      response.writeHead(200, {"Content-Type": "image/png"});
-      response.write(file, "binary");
-      response.end();
-    }
-  });
-}
+// function logo(response) {
+//   console.log("Request handler 'logo' was called.");
+//   fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
+//     if(error) {
+//       response.writeHead(500, {"Content-Type": "text/plain"});
+//       response.write(error + "\n");
+//       response.end();
+//     } else {
+//       response.writeHead(200, {"Content-Type": "image/png"});
+//       response.write(file, "binary");
+//       response.end();
+//     }
+//   });
+// }
 
 //理想函式
 function upload_want(response, exec, postData) {
@@ -171,4 +173,4 @@ function upload_test(response, exec, postData, spawn) {
 exports.start = start;
 exports.upload = upload;
 exports.show = show;
-exports.show = logo;
+// exports.show = logo;
