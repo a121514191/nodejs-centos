@@ -9,23 +9,23 @@ function start(route, handle, exec,spawn) {
     console.log("Request for " + pathname + " received."); //每當有人訪問時
 
     // 圖片上傳
-    // route(handle, pathname, response, exec,postData,spawn,request);
+    route(handle, pathname, response, exec,postData,spawn,request);
 
     // 建立vhost與讀檔
-    request.setEncoding("utf8"); //設定了接收資料的編碼格式為UTF-8
-    // 然後註冊了 "data" 事件的監聽器，用於收集每次接收到的新資料區塊，並將其賦值給postData 變數
-    request.addListener("data", function (postDataChunk) {
-      console.log('start');
-      postData += postDataChunk;
-      console.log(postData);
-      // console.log("Received POST data chunk '" +
-      //   postDataChunk + "'.");
-    });
-    request.addListener("end", function () {
-      console.log('end');
-      console.log(postData);
-      route(handle, pathname, response,exec,postData,spawn);
-    });
+    // request.setEncoding("utf8"); //設定了接收資料的編碼格式為UTF-8
+    // // 然後註冊了 "data" 事件的監聽器，用於收集每次接收到的新資料區塊，並將其賦值給postData 變數
+    // request.addListener("data", function (postDataChunk) {
+    //   console.log('start');
+    //   postData += postDataChunk;
+    //   console.log(postData);
+    //   // console.log("Received POST data chunk '" +
+    //   //   postDataChunk + "'.");
+    // });
+    // request.addListener("end", function () {
+    //   console.log('end');
+    //   console.log(postData);
+    //   route(handle, pathname, response,exec,postData,spawn);
+    // });
 
     // route(handle, pathname, response, exec);//初始路由
 
