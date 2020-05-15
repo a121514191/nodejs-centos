@@ -2,7 +2,7 @@ var formidable = require('formidable');
 
 var querystring = require("querystring");
 
-
+var fs = require("fs");
 
 function start(response, exec, postData, spawn) {
   console.log("Request handler 'start' was called.");
@@ -71,7 +71,7 @@ function upload(response, exec, postData, spawn, request) {
   response.end();
 }
 
-function show(response, exec, postData, spawn, request,fs) {
+function show(response, exec, postData, spawn, request) {
   console.log("Request handler 'show' was called.");
   fs.readFile("/tmp/test.png", "binary", function(error, file) {
     if(error) {
@@ -86,7 +86,7 @@ function show(response, exec, postData, spawn, request,fs) {
   });
 }
 
-function logo(response, exec, postData, spawn, request,fs) {
+function logo(response, exec, postData, spawn, request) {
   console.log("Request handler 'logo' was called.");
   fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
     if(error) {
