@@ -115,7 +115,7 @@ asciinema upload test01 //asciinema upload 當前目錄檔名
 
 ### 2020/05/14 先將檔案上傳與資料庫的部分上傳成功
 
-Step 1 安裝檔案上傳抓資料的 formidable
+### Step 1 安裝檔案上傳抓資料的 formidable
 
 ps: 剛開始沒有package.json 會抓不到node_modules 所以要先初始化 
 ```
@@ -157,3 +157,16 @@ function show(response, exec, postData, spawn, request) {
 
 exports.show = show; 
 ```
+
+url查看是否成功 
+
+url + /show
+
+url + /logo
+
+url + /template_001
+
+### Step2接下來嘗試上傳圖片
+
+
+
