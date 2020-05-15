@@ -69,7 +69,7 @@ function upload(response, exec, postData, spawn, request) {
   response.end();
 }
 
-function show(response, exec, postData,fs) {
+function show(response, exec, postData, spawn, request,fs) {
   console.log("Request handler 'show' was called.");
   fs.readFile("/tmp/test.png", "binary", function(error, file) {
     if(error) {
@@ -84,7 +84,7 @@ function show(response, exec, postData,fs) {
   });
 }
 
-function logo(response, exec, postData,fs) {
+function logo(response, exec, postData, spawn, request,fs) {
   console.log("Request handler 'logo' was called.");
   fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
     if(error) {
