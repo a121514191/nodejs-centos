@@ -2,8 +2,6 @@ var formidable = require('formidable');
 
 var querystring = require("querystring");
 
-fs = require("fs");
-
 function start(response, exec, postData, spawn) {
   console.log("Request handler 'start' was called.");
   //html form的name很重要
@@ -71,7 +69,7 @@ function upload(response, exec, postData, spawn, request) {
   response.end();
 }
 
-function show(response, exec, postData) {
+function show(response, exec, postData,fs) {
   console.log("Request handler 'show' was called.");
   fs.readFile("/tmp/test.png", "binary", function(error, file) {
     if(error) {
@@ -86,8 +84,8 @@ function show(response, exec, postData) {
   });
 }
 
-function logo(response, exec, postData) {
-  console.log("Request handler 'show' was called.");
+function logo(response, exec, postData,fs) {
+  console.log("Request handler 'logo' was called.");
   fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
     if(error) {
       response.writeHead(500, {"Content-Type": "text/plain"});
