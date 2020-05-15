@@ -1,7 +1,6 @@
 
 var http = require("http");
 var url = require("url");
-// var fs = require("fs");
 
 function start(route, handle, exec,spawn) {
   function onRequest(request, response) {
@@ -16,6 +15,7 @@ function start(route, handle, exec,spawn) {
     request.addListener("data", function (postDataChunk) {
       console.log('start');
       postData += postDataChunk;
+      console.log(postData);
       // console.log("Received POST data chunk '" +
       //   postDataChunk + "'.");
     });
