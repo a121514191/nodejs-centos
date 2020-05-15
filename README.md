@@ -166,7 +166,52 @@ url + /logo
 
 url + /template_001
 
-### Step2接下來嘗試上傳圖片
+### Step2接下來嘗試上傳圖片(之後就能上傳檔案)
 
+上傳使用到 剛剛 install 的 formidable 
+
+```
+function upload_image(response, exec, postData, spawn,request) {
+  var form = new formidable.IncomingForm();
+  console.log("about to parse 預備");
+  console.log(form);
+  form.parse(request, function (error, fields, files) {
+    console.log("查看file");
+    console.log(files);
+    console.log("parsing done");
+    fs.renameSync(files.upload.path, "/tmp/test.png"); //寫入資料
+  });
+  response.writeHead(200, { "Content-Type": "text/html" });
+  response.write("received image:<br/>");
+  response.write("<img src='/show' />");   //跑html src 填寫相關函式(路徑)
+  response.end();
+}
+```
+
+### 檔案與資料庫的上傳方式 
+目前使用過 
+
+1.將不同版型上架在gitlab上
+
+     選擇vhost 
+
+     選擇Document
+
+     選擇版型(將版型的名稱帶入 git_url 並且git_clone)
+
+問題: 兩人如果選同板型，那如果有要更新程式碼，那就得必須拉出來重建git 
+      因為改一個版，會動到全部版
+
+勝平提出:
+
+2.一個專案 (裡面包多種版型加database) git到server 
+
+     選擇vhost 
+
+     選擇Document
+
+     選擇版型(將版型的名稱帶入 並從 server 端複製 檔案進入 網站資料夾)
+
+問題: 一樣問題 要修改時 都要重新佈署git 
 
 
