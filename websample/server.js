@@ -21,7 +21,7 @@ function start(route, handle, exec,spawn) {
     });
     request.addListener("end", function () {
       console.log('end');
-      route(handle, pathname, response,exec,postData,spawn,request);
+      route(handle, pathname, response,exec,postData,spawn);
     });
 
     // route(handle, pathname, response, exec);//初始路由
