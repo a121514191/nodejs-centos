@@ -189,7 +189,7 @@ function upload_image(response, exec, postData, spawn,request) {
 ```
 
 ### 檔案與資料庫的上傳方式
- 
+
 目前使用過 
 
 1.將不同版型上架在gitlab上
@@ -215,4 +215,4 @@ function upload_image(response, exec, postData, spawn,request) {
 
 問題: 一樣問題 要修改時 都要重新佈署git 
 
-
+選擇其2 
