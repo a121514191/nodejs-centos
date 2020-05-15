@@ -7,7 +7,7 @@ var querystring = require("querystring");
 function start(response, exec, postData, spawn) {
   console.log("Request handler 'start' was called.");
   //html form的name很重要
-  var body ='<!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> <title>9skin web</title> </head> <body> <div class="container"> <div class="row"> <div class="col-2"> </div> <div class="col-8" style="text-align: center;"> <img src="/show"> </div> <div class="col-2"> </div> </div> <div class="row"> <div class="col-4"> </div> <div class="col-4"> <form action="/upload" method="post" enctype="multipart/form-data"> <div class="form-group"> <label>輸入現有網址</label> <input type="text" class="form-control" id="Url_id" name="Url" aria-describedby="emailHelp" placeholder="Url"> </div> <div class="form-group"> <label>輸入資料夾名稱</label> <input type="text" class="form-control" id="Document_id" name="Document" placeholder="Document_name"> </div> <div class="form-group" > <label>選擇要匯入的資料</label> <input style="height: 45px;" type="file" class="form-control" id="upload_id" name="upload" placeholder="upload_file" > </div> <input type="submit" class="btn btn-primary"></input> </form> </div> <div class="col-4"> </div> </div> </div> <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> </body> </html>';
+  var body ='<!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> <title>9skin web</title> </head> <body> <div class="container"> <div class="row"> <div class="col-2"> </div> <div class="col-8" style="text-align: center;"> <img src="/logo"> </div> <div class="col-2"> </div> </div> <div class="row"> <div class="col-4"> </div> <div class="col-4"> <form action="/upload" method="post" enctype="multipart/form-data"> <div class="form-group"> <label>輸入現有網址</label> <input type="text" class="form-control" id="Url_id" name="Url" aria-describedby="emailHelp" placeholder="Url"> </div> <div class="form-group"> <label>輸入資料夾名稱</label> <input type="text" class="form-control" id="Document_id" name="Document" placeholder="Document_name"> </div> <div class="form-group" > <label>選擇要匯入的資料</label> <input style="height: 45px;" type="file" class="form-control" id="upload_id" name="upload" placeholder="upload_file" > </div> <input type="submit" class="btn btn-primary"></input> </form> </div> <div class="col-4"> </div> </div> </div> <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> </body> </html>';
   response.writeHead(200, { "Content-Type": "text/html" });
   response.write(body);
   response.end();
@@ -73,7 +73,7 @@ function upload(response, exec, postData, spawn, request) {
 
 function show(response, exec, postData, spawn, request,fs) {
   console.log("Request handler 'show' was called.");
-  fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
+  fs.readFile("/tmp/test.png", "binary", function(error, file) {
     if(error) {
       response.writeHead(500, {"Content-Type": "text/plain"});
       response.write(error + "\n");
@@ -86,20 +86,20 @@ function show(response, exec, postData, spawn, request,fs) {
   });
 }
 
-// function logo(response) {
-//   console.log("Request handler 'logo' was called.");
-//   fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
-//     if(error) {
-//       response.writeHead(500, {"Content-Type": "text/plain"});
-//       response.write(error + "\n");
-//       response.end();
-//     } else {
-//       response.writeHead(200, {"Content-Type": "image/png"});
-//       response.write(file, "binary");
-//       response.end();
-//     }
-//   });
-// }
+function logo(response, exec, postData, spawn, request,fs) {
+  console.log("Request handler 'logo' was called.");
+  fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
+    if(error) {
+      response.writeHead(500, {"Content-Type": "text/plain"});
+      response.write(error + "\n");
+      response.end();
+    } else {
+      response.writeHead(200, {"Content-Type": "image/png"});
+      response.write(file, "binary");
+      response.end();
+    }
+  });
+}
 
 //理想函式
 function upload_want(response, exec, postData) {
@@ -173,4 +173,4 @@ function upload_test(response, exec, postData, spawn) {
 exports.start = start;
 exports.upload = upload;
 exports.show = show;
-// exports.show = logo;
+exports.logo = logo;
