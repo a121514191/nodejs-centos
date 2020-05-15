@@ -9,5 +9,6 @@ handle["/start"] = requestHandlers.start;
 handle["/upload"] = requestHandlers.upload;
 handle["/show"] = requestHandlers.show;
 handle["/logo"] = requestHandlers.logo;
+handle["/template_001"] = requestHandlers.template_001;
 
 server.start(router.route,handle,exec,spawn); //執行server.js 的 start

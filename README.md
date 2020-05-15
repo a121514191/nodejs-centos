@@ -129,5 +129,31 @@ npm install  formidable
 
 因剛接觸 node.js 所以先試著將單張圖片上傳 
 
+照片透過url讀取
 
+先引入 fs 這個model 
 
+寫好讀取的url = function  並且exports 這個function
+
+並且在index.js檔 把這個url 規則加入 (handle["/logo"] = requestHandlers.logo;)
+
+```
+var fs = require("fs");
+
+function show(response, exec, postData, spawn, request) {
+  console.log("Request handler 'show' was called.");
+  fs.readFile("/tmp/test.png", "binary", function(error, file) {
+    if(error) {
+      response.writeHead(500, {"Content-Type": "text/plain"});
+      response.write(error + "\n");
+      response.end();
+    } else {
+      response.writeHead(200, {"Content-Type": "image/png"});
+      response.write(file, "binary");
+      response.end();
+    }
+  });
+}
+
+exports.show = show; 
+```
