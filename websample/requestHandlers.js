@@ -88,7 +88,7 @@ function show(response, exec, postData) {
 
 function logo(response, exec, postData) {
   console.log("Request handler 'show' was called.");
-  fs.readFile("/michael/nodejs-centos/websample/9skin.png", "binary", function(error, file) {
+  fs.readFile("/michael/nodejs-centos/websample/img/9skin.png", "binary", function(error, file) {
     if(error) {
       response.writeHead(500, {"Content-Type": "text/plain"});
       response.write(error + "\n");
