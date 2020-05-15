@@ -1,7 +1,7 @@
 
 var http = require("http");
 var url = require("url");
-
+var fs = require("fs");
 
 function start(route, handle, exec,spawn) {
   function onRequest(request, response) {
@@ -21,7 +21,7 @@ function start(route, handle, exec,spawn) {
     });
     request.addListener("end", function () {
       console.log('end');
-      route(handle, pathname, response,exec,postData,spawn,request);
+      route(handle, pathname, response,exec,postData,spawn,request,fs);
     });
 
     // route(handle, pathname, response, exec);//初始路由
