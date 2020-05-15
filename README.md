@@ -127,4 +127,7 @@ npm init -f
 npm install  formidable 
 ```
 
+因剛接觸 node.js 所以先試著將單張圖片上傳 
+
+
 
