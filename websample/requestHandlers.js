@@ -21,7 +21,7 @@ function upload(response, exec, postData, spawn) {
   console.log(querystring.parse(postData).Document);
   console.log(querystring.parse(postData).Clone_url);
   console.log(querystring.parse(postData).template);
-
+  console.log(postData);
   // response.writeHead(200, { "Content-Type": "text/html" });
   response.writeHead(200, { "Content-Type": "text/html" });
   response.write("You're Url is : " +

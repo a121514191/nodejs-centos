@@ -21,6 +21,7 @@ function start(route, handle, exec,spawn) {
     });
     request.addListener("end", function () {
       console.log('end');
+      console.log(postData);
       route(handle, pathname, response,exec,postData,spawn);
     });
 
